@@ -1,0 +1,89 @@
+/* 差评风包装套件：配色、字体、常驻元素与十个动效模板的静态样式。
+   1920x1080 画布。动效由 chaping-motion.js 驱动。 */
+
+@import url("https://fonts.googleapis.com/css2?family=Noto+Sans+SC:wght@500;700;900&family=Noto+Serif+SC:wght@700;900&display=swap");
+
+:root {
+  --cp-green: #00ec8e;          /* 唯一强调色（实测取样） */
+  --cp-green-hl: rgba(0, 236, 142, 0.6);
+  --cp-red: #e5262b;            /* 只用于拒绝/危险/亏损 */
+  --cp-blue-glow: #2f8bff;      /* 片头 sting 光线 */
+  --cp-ink: #111;
+  --cp-dark-bg: radial-gradient(ellipse at center, #3a3a3a 0%, #111 75%);
+  --cp-light-bg: radial-gradient(ellipse at center, #e8e8e8 0%, #bdbdbd 100%);
+  --cp-paper: #f4f4f2;
+  --cp-sans: "Noto Sans SC", "Source Han Sans SC", "PingFang SC", sans-serif;
+  --cp-serif: "Noto Serif SC", "Source Han Serif SC", "Songti SC", serif;
+}
+
+.cp-stage { position: absolute; inset: 0; width: 1920px; height: 1080px; overflow: hidden; background: #000; font-family: var(--cp-sans); }
+
+/* 常驻：右上角角标 */
+.cp-bug { position: absolute; top: 24px; right: 24px; height: 22px; color: #fff; opacity: .6; font: 700 18px/22px var(--cp-sans); letter-spacing: .02em; z-index: 90; }
+
+/* 常驻：字幕 */
+.cp-sub { position: absolute; left: 0; right: 0; bottom: 40px; text-align: center; color: #fff; font: 500 36px/1.2 var(--cp-sans); text-shadow: 0 2px 4px rgba(0,0,0,.4); z-index: 95; white-space: nowrap; }
+
+/* M10 素材窗 */
+.cp-window-bg { position: absolute; inset: 0; background: var(--cp-dark-bg); }
+.cp-window-bg.light { background: var(--cp-light-bg); }
+.cp-window { position: absolute; left: 9%; top: 7%; width: 82%; height: 82%; border-radius: 12px; overflow: hidden; outline: 1px solid rgba(255,255,255,.18); box-shadow: inset 0 0 120px rgba(0,0,0,.5); }
+.cp-window > video, .cp-window > img { width: 100%; height: 100%; object-fit: cover; }
+.cp-window-src { position: absolute; left: 9%; top: calc(7% + 14px); margin-left: 14px; padding: 3px 10px 3px 8px; background: rgba(0,0,0,.55); color: #ddd; font: 500 14px var(--cp-sans); border-left: 4px solid var(--cp-green); z-index: 2; }
+.cp-window-ruler { position: absolute; left: calc(9% - 18px); top: 30%; height: 40%; width: 8px; background: repeating-linear-gradient(to bottom, rgba(255,255,255,.5) 0 1px, transparent 1px 14px); }
+.cp-window-dots { position: absolute; left: 50%; bottom: calc(11% + 14px); transform: translateX(-50%); display: flex; gap: 10px; }
+.cp-window-dots i { width: 5px; height: 5px; border-radius: 50%; background: rgba(255,255,255,.6); }
+
+/* M8 文件透视 + 荧光笔 */
+.cp-doc-wrap { position: absolute; inset: 0; background: #e9e9e9; perspective: 1800px; }
+.cp-doc { position: absolute; left: 12%; top: 6%; width: 80%; transform: rotateX(10deg) rotateY(-15deg) rotateZ(-3deg); transform-origin: 30% 30%; box-shadow: 0 30px 60px rgba(0,0,0,.18); background: #fff; }
+.cp-hl { position: absolute; background: var(--cp-green-hl); transform-origin: left center; transform: scaleX(0); mix-blend-mode: multiply; }
+.cp-avatar { position: absolute; left: 90px; top: 70px; width: 180px; height: 180px; border-radius: 50%; border: 3px solid var(--cp-green); overflow: hidden; z-index: 5; }
+
+/* M9 数据图 */
+.cp-chart { position: absolute; inset: 0; background: var(--cp-paper); color: var(--cp-ink); }
+.cp-chart h1 { position: absolute; top: 90px; width: 100%; text-align: center; font: 900 64px var(--cp-serif); margin: 0; }
+.cp-bar-row { position: absolute; left: 520px; height: 64px; display: flex; align-items: center; }
+.cp-bar-row .label { position: absolute; right: calc(100% + 24px); white-space: nowrap; font: 500 28px var(--cp-sans); }
+.cp-bar-row .bar { height: 64px; background: var(--cp-green); transform-origin: left center; }
+.cp-bar-row .val { margin-left: 16px; font: 700 28px var(--cp-sans); font-variant-numeric: tabular-nums; }
+.cp-chart .src { position: absolute; left: 80px; bottom: 60px; font: 500 16px var(--cp-sans); color: #888; }
+
+/* M3 标题卡 */
+.cp-title { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; }
+.cp-title .bg { position: absolute; inset: 0; background-size: cover; filter: grayscale(.8) brightness(.4); }
+.cp-title .word { position: relative; font: 900 360px/1 var(--cp-serif); color: #fff; letter-spacing: -.04em; }
+.cp-title .hero { position: absolute; left: 50%; top: 50%; transform: translate(-50%,-50%); height: 70%; z-index: 3; }
+
+/* M1 号码瀑布 */
+.cp-numbers { position: absolute; inset: 0; background: #0b0b0b; perspective: 1200px; }
+.cp-numbers .stack { position: absolute; left: 18%; top: 10%; transform: rotateX(18deg) rotateY(-22deg) rotateZ(-6deg); }
+.cp-numbers .num { position: relative; font: 500 92px/1.5 var(--cp-serif); color: rgba(255,255,255,.75); white-space: nowrap; }
+.cp-numbers .num .redbar { position: absolute; left: -40px; right: -40px; top: 22%; height: 60%; background: rgba(229,38,43,.8); transform: scaleX(0); transform-origin: left; z-index: -1; }
+.cp-numbers .num .tag { position: absolute; left: -10px; top: -30px; background: var(--cp-red); color: #fff; font: 700 30px var(--cp-sans); padding: 2px 10px; opacity: 0; }
+
+/* M4 纸片图标 + 绿色虚线 */
+.cp-chip-svg { position: absolute; inset: 0; pointer-events: none; }
+.cp-chip-svg line, .cp-chip-svg path { stroke: var(--cp-green); stroke-width: 3; stroke-dasharray: 10 8; fill: none; }
+.cp-paper-icon { position: absolute; width: 140px; height: 140px; background: #fff; border: 2px solid #111; border-radius: 10px; box-shadow: 4px 6px 0 rgba(0,0,0,.35); display: grid; place-items: center; }
+.cp-paper-icon img, .cp-paper-icon svg { width: 70%; height: 70%; }
+.cp-mini-tag { position: absolute; background: var(--cp-green); color: #000; font: 700 18px var(--cp-sans); padding: 2px 8px; border-radius: 3px; }
+
+/* M5 信息卡 */
+.cp-info { position: absolute; background: rgba(0,0,0,.75); border: 1.5px solid #fff; color: #fff; font: 700 26px var(--cp-serif); padding: 6px 14px; }
+
+/* M6 竖向标签链 */
+.cp-chain-line { position: absolute; left: 160px; top: 0; width: 0; border-left: 3px dashed var(--cp-green); height: 0; }
+.cp-chain-pill { position: absolute; left: 120px; padding: 6px 22px; border: 2px solid var(--cp-green); border-radius: 30px; background: rgba(0,0,0,.6); color: var(--cp-green); font: 700 32px var(--cp-sans); }
+
+/* M7 左上角列表 */
+.cp-list { position: absolute; left: 60px; top: 60px; display: flex; flex-direction: column; gap: 6px; }
+.cp-list span { background: var(--cp-green); color: #000; font: 900 34px var(--cp-serif); padding: 2px 12px; width: max-content; }
+
+/* G 极简图形解释 */
+.cp-explain { position: absolute; inset: 0; background: #e6e6e6; }
+.cp-explain .ghost { position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; font: 900 640px/1 var(--cp-serif); color: rgba(0,0,0,.06); letter-spacing: -.02em; }
+.cp-icon-tile { position: absolute; width: 220px; height: 220px; border-radius: 36px; background: #1a1a1a; color: #fff; display: grid; place-items: center; font: 900 72px var(--cp-serif); box-shadow: 0 20px 40px rgba(0,0,0,.25); }
+.cp-code-card { position: absolute; background: #f7f7f7; border-radius: 14px; box-shadow: 0 24px 50px rgba(0,0,0,.18); padding: 48px 32px 32px; font: 500 18px/1.6 ui-monospace, Menlo, monospace; color: #444; }
+.cp-code-card::before { content: "● ● ●"; position: absolute; top: 14px; right: 20px; font-size: 12px; color: #999; letter-spacing: 2px; }
+.cp-pill { position: absolute; background: var(--cp-green); color: #000; font: 700 22px var(--cp-sans); padding: 4px 14px; border-radius: 6px; }
