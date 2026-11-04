@@ -1,8 +1,6 @@
 # 浏览器剪辑预览工程（web-player）
 
-> 同步自 [video-workbench/网页引擎](https://github.com/mwxycy-maker/video-workbench/tree/main/网页引擎)。以下命令都在 content-guidelines 仓库根目录执行。
-
-从 STEPX 剪辑工程提取的轻量参考实现：纯 HTML + JavaScript + Canvas，预览不需要 npm、不需要先编码整条视频。来源基线：[StepXNeoDY / edit-final-20261017](https://github.com/AndroidOne-io/StepXNeoDY/tree/edit-final-20261017/剪辑工程)。
+本仓库的轻量浏览器剪辑预览引擎：纯 HTML + JavaScript + Canvas，预览不需要 npm，也不用先把整条视频编码成 MP4。以下命令都在 `content-guidelines` 仓库根目录执行。
 
 先读 [实现与复用指南](实现与复用指南.md)。这是带可运行样例的起步模板，不是自动完成转写、剪辑和配乐的一键成片工具。
 
@@ -48,9 +46,9 @@ python3 /你的新项目/剪辑预览/serve.py --port 8771
 
 ```bash
 # 需要本机 Chrome、FFmpeg；uv 只为导出脚本提供 Playwright
-uv run --with playwright python export_mp4.py \
+uv run --with playwright python /你的新项目/剪辑预览/export_mp4.py \
   --url http://127.0.0.1:8771/index.html \
-  --out output/成片_2K_1.1倍速.mp4 \
+  --out /你的新项目/剪辑预览/output/成片_2K_1.1倍速.mp4 \
   --width 2560 --fps 30 --speed 1.1 --require-hd
 ```
 
@@ -58,13 +56,11 @@ uv run --with playwright python export_mp4.py \
 - `--require-hd` 检查服务有本地高清映射，不是全素材分辨率认证；逐项检查仍需在导出前完成。
 - 素材读不了就报错，不自动回退低清代理。已有输出文件不覆盖。
 - 当前引擎逻辑画布为 1920×1080，2560×1440 输出用 Lanczos 放大，**不是原生 2K 画布合成**。高清源可以改善裁切细节，但不能凭此恢复不存在的文字细节。
-- 通用导出器先保留单进程，降低视频解码资源争抢。STEPX 的并行导出器可作后续优化参考，先实测内存和解码能力，不默认堆到 6 个浏览器。
+- 导出器默认单进程，降低视频解码资源争抢。需要并行时先实测机器内存和解码能力，再决定并发数。
 
-## 复用边界
+## 能力边界
 
-`engine.js` 和 `player.js` 提取自已使用过的工程；播放器去掉 STEPX 专用存储键，音轨改为数据配置。启动器、通用 HTTP 服务、最小数据构建器及单进程导出器为本次新增适配。既有 STEPX 项目没有被迁移到此模板。
-
-先用模板完成本期素材的播放和跳转检查，再接复杂效果。横竖屏切换、原生 2K 合成、自动 ASR、完整音轨编辑器不在本模板能力范围内。
+此目录提供播放器、HTTP 服务、最小数据构建器和单进程导出器。先用模板完成本期素材的播放与跳转检查，再接复杂效果。横竖屏切换、原生 2K 合成、自动 ASR 和完整音轨编辑器不在模板能力范围内；转写、口播剪接和混音须在本期工程里完成。
 
 ## 模板验证
 

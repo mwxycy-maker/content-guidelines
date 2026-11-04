@@ -4,7 +4,7 @@
 
 ## 跨风格剪辑规则
 
-从 [video-workbench](https://github.com/mwxycy-maker/video-workbench) 的通用剪辑要求和 [jianjiguize](https://github.com/mwxycy-maker/jianjiguize) 的实战规则整理而来；未搬运 `video-workbench/风格库`。先读 [剪辑规则入口](editing/README.md)，再按任务查看：
+视频制作先读 [剪辑规则入口](editing/README.md)，再按任务查看对应章节：
 
 | 任务 | 文档 |
 |---|---|
@@ -50,7 +50,7 @@ cp -R skills/* ~/.claude/skills/
 
 ## 网页播放器（web-player）
 
-[`web-player/`](web-player/README.md) 是配套的浏览器剪辑预览引擎：纯 HTML + JavaScript + Canvas，不依赖 npm，音轨做主时钟，支持拖动、镜头跳转、0.25–4× 倍速、逐帧和全屏，可按需用 Playwright + FFmpeg 逐帧导出 MP4。按上面任一风格写好分镜后，用它把每期视频做成可实时播放的网页。
+[`web-player/`](web-player/README.md) 是本仓库的浏览器剪辑预览引擎：纯 HTML + JavaScript + Canvas，不依赖 npm，音轨做主时钟，支持拖动、镜头跳转、0.25–4× 倍速、逐帧和全屏，可按需用 Playwright + FFmpeg 逐帧导出 MP4。按通用剪辑规则建立时间线后，用它把每期视频做成可实时播放的网页。
 
 ```bash
 python3 web-player/init_project.py /你的新项目/剪辑预览
