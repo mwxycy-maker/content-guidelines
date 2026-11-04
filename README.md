@@ -14,9 +14,21 @@
 | BGM、音效、混音 | [声音与配乐](editing/04-声音与配乐.md) |
 | 审片、交付、常见故障 | [审片与交付](editing/05-审片与交付.md) |
 
-当期用户的明确要求优先；这些跨风格规则约束制作流程，各风格 Skill 提供该风格的视觉和节奏方案。
+当期用户的明确要求优先；**通用剪辑规则决定视频基调、制作流程和硬性指标，优先于所有风格 Skill**。风格 Skill 只提供可选择的视觉、叙事与节奏参考，不能覆盖剪辑规则。
 
-## 风格 Skill
+### 在视频任务里调用
+
+仓库里的 `editing/` 是便于查阅的规范文档；要让 Codex 或 Claude Code 在制作视频时发现并加载通用规则，安装 [`content-video-editing` Skill](skills/content-video-editing/SKILL.md)：
+
+```bash
+# 在本仓库根目录执行，按自己使用的客户端选一行
+cp -R skills/content-video-editing ~/.codex/skills/
+cp -R skills/content-video-editing ~/.claude/skills/
+```
+
+安装后请明确说：`用 $content-video-editing 按我的通用剪辑规则做这期视频`。需要特定视觉风格时，再点名一个风格 Skill 作参考；遇到差异，剪辑规则优先。未安装时，也可以在任务中给出本仓库的 [剪辑规则入口](editing/README.md) 链接并要求先读。
+
+## 风格参考 Skill
 
 | Skill | 风格 | 适合题材 |
 |---|---|---|
@@ -30,7 +42,7 @@
 
 ## 安装风格 Skill
 
-把需要的目录复制到 `~/.claude/skills/` 下即可：
+把需要的风格目录复制到 `~/.claude/skills/` 下即可；使用 Codex 时换成 `~/.codex/skills/`：
 
 ```bash
 cp -R skills/* ~/.claude/skills/
