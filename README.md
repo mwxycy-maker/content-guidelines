@@ -1,6 +1,22 @@
 # content-guidelines
 
-内容制作规范：按 B 站头部知识类账号风格整理的视频制作 Skill，可直接装进 Claude Code 使用。
+内容制作规范：跨风格剪辑规则、可复用网页播放器，以及按 B 站头部知识类账号风格整理的视频制作 Skill。
+
+## 跨风格剪辑规则
+
+从 [video-workbench](https://github.com/mwxycy-maker/video-workbench) 的通用剪辑要求和 [jianjiguize](https://github.com/mwxycy-maker/jianjiguize) 的实战规则整理而来；未搬运 `video-workbench/风格库`。先读 [剪辑规则入口](editing/README.md)，再按任务查看：
+
+| 任务 | 文档 |
+|---|---|
+| 开工、分段、预览和时间线 | [工作流程](editing/01-工作流程.md) |
+| 去停顿、转写、字幕 | [口播与字幕](editing/02-口播与字幕.md) |
+| 画面、素材、动效 | [画面与动效](editing/03-画面与动效.md) |
+| BGM、音效、混音 | [声音与配乐](editing/04-声音与配乐.md) |
+| 审片、交付、常见故障 | [审片与交付](editing/05-审片与交付.md) |
+
+当期用户的明确要求优先；这些跨风格规则约束制作流程，各风格 Skill 提供该风格的视觉和节奏方案。
+
+## 风格 Skill
 
 | Skill | 风格 | 适合题材 |
 |---|---|---|
@@ -12,7 +28,7 @@
 
 每个 Skill 包含 `SKILL.md`（总览与核心规格）和 `references/`（口播稿、画面、剪辑、动效、声音、交付检查清单）。
 
-## 安装
+## 安装风格 Skill
 
 把需要的目录复制到 `~/.claude/skills/` 下即可：
 
