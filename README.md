@@ -8,6 +8,7 @@
 | [xiaolin-style](skills/xiaolin-style/SKILL.md) | 小Lin说 | 财经、商业、金融知识 |
 | [yingshijufeng-style](skills/yingshijufeng-style/SKILL.md) | 影视飓风 | 影像技术、行业科普 |
 | [hetongxue-style](skills/hetongxue-style/SKILL.md) | 何同学 | 科技创意、产品体验 |
+| [aliang-style](skills/aliang-style/SKILL.md) | 跟着阿亮学AI | AI 工具部署教程、大模型横评 |
 
 每个 Skill 包含 `SKILL.md`（总览与核心规格）和 `references/`（口播稿、画面、剪辑、动效、声音、交付检查清单）。
 
