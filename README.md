@@ -20,6 +20,18 @@
 cp -R skills/* ~/.claude/skills/
 ```
 
+## 网页播放器（web-player）
+
+[`web-player/`](web-player/README.md) 是配套的浏览器剪辑预览引擎：纯 HTML + JavaScript + Canvas，不依赖 npm，音轨做主时钟，支持拖动、镜头跳转、0.25–4× 倍速、逐帧和全屏，可按需用 Playwright + FFmpeg 逐帧导出 MP4。按上面任一风格写好分镜后，用它把每期视频做成可实时播放的网页。
+
+```bash
+python3 web-player/init_project.py /你的新项目/剪辑预览
+python3 /你的新项目/剪辑预览/serve.py --port 8771
+# 打开 http://127.0.0.1:8771/index.html
+```
+
+详见 [web-player/README.md](web-player/README.md) 与 [实现与复用指南](web-player/实现与复用指南.md)。
+
 ## 说明
 
 各频道的名称、字标、主持人形象和布景属于原作者。这些规范只提炼结构、节奏、动效语法和配色逻辑，做自己的视频时请换成自己的品牌。
